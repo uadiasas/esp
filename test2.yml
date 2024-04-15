@@ -1,0 +1,29 @@
+esphome:
+  name: room2
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: "12345678"
+
+ota:
+  password: "12345678"
+
+wifi:
+  ssid: "TP-Link_7958"
+  password: "00436588"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Room2 Fallback Hotspot"
+    password: "FZiLOBUZg8zu"
+
+captive_portal:
+    

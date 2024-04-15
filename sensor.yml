@@ -1,0 +1,43 @@
+esphome:
+  name: room
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: "12345678"
+
+ota:
+  password: "12345678"
+
+wifi:
+  ssid: "SmartHome"
+  password: "SmartHome"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Room Fallback Hotspot"
+    password: "wuec5dnsrJ9m"
+
+
+i2c:
+  sda: 21
+  scl: 22
+  scan: true
+  id: bus_a
+
+sensor:
+  - platform: bmp280
+    temperature:
+      name: "Outside Temperature"
+      oversampling: 16x
+    pressure:
+      name: "Outside Pressure"
+    address: 0x76
+    update_interval: 60s

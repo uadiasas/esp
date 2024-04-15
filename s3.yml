@@ -1,0 +1,40 @@
+esphome:
+  name: roomvadim
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: ""
+
+ota:
+  password: ""
+
+wifi:
+  ssid: "SmartHome"
+  password: "SmartHome"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Roomvadim Fallback Hotspot"
+    password: "94JPAeDGO70m"
+
+captive_portal:
+
+
+
+output:
+  - platform: gpio
+    pin: GPIO2
+    id: led
+
+light:
+  - platform: binary
+    output: led
+    name: "My LED"
