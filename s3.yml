@@ -17,8 +17,8 @@ ota:
   password: ""
 
 wifi:
-  ssid: "SmartHome"
-  password: "SmartHome"
+  ssid: "TP-Link_7958"
+  password: "00436588"
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
@@ -38,3 +38,13 @@ light:
   - platform: binary
     output: led
     name: "My LED"
+
+# Example configuration entry
+dallas:
+  - pin: GPIO17 #23
+
+# Individual sensors
+sensor:
+  - platform: dallas
+    address: 0xdc0b2345e5437728
+    name: "Living Room Temperature"
