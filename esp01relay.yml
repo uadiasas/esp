@@ -1,0 +1,57 @@
+
+
+esphome:
+  name: relay_controller
+  platform: ESP8266
+  board: esp01
+
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  password: ""
+
+wifi:
+  ssid: "TP-Link_7958"
+  password: "00436588"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Heart Fallback Hotspot"
+    password: "f2MTBkrPhnmX"
+
+captive_portal:
+
+switch:
+  - platform: template
+    id: relay1
+    name: "relay1 switch"
+    turn_on_action:
+      - uart.write: [0xA0, 0x01, 0x01, 0xA2]
+      - switch.template.publish:
+          id: relay1
+          state: ON
+    turn_off_action:
+      - uart.write: [0xA0, 0x01, 0x00, 0xA1]
+      - switch.template.publish:
+          id: relay1
+          state: OFF
+sensor:
+  - platform: wifi_signal
+    name: ${devicename} wifi signal
+    update_interval: 600s
+
+
+
+
+# Stuff to control this relay:
+uart:
+  tx_pin: GPIO1
+  rx_pin: GPIO3
+  baud_rate: 9600
+
+
