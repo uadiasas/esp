@@ -1,5 +1,5 @@
 esphome:
-  name: roomvadim
+  name: smartaquarium
 
 esp32:
   board: esp32dev
@@ -42,9 +42,10 @@ light:
 # Example configuration entry
 dallas:
   - pin: GPIO17 #23
+    update_interval: 5s
 
 # Individual sensors
 sensor:
   - platform: dallas
     address: 0xdc0b2345e5437728
-    name: "Living Room Temperature"
+    name: "Температура"

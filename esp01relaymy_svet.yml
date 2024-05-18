@@ -1,0 +1,36 @@
+esphome:
+  name: smartaquarium
+
+esp8266:
+  board: esp01
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: ""
+
+ota:
+  password: ""
+
+wifi:
+  ssid: "TP-Link_7958"
+  password: "00436588"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: " Fallback Hotspot"
+    password: "NAnPqhhUb5oZ"
+
+captive_portal:
+
+
+
+
+switch:
+  - platform: gpio
+    pin: GPIO0
+    id: relay
+    name: "Освещениие"
+    inverted: true
