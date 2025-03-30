@@ -1,0 +1,72 @@
+esphome:
+  name: esp32
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: ""
+
+ota:
+  - platform: esphome
+    password: ""
+
+wifi:
+  ssid: "TP-Link_7958"
+  password: "00436588"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Esp32 Fallback Hotspot"
+    password: "wDxlGuhFpHB3"
+
+captive_portal:
+
+
+i2c:
+  sda: 17
+  scl: 16
+  scan: true
+
+sensor:
+  - platform: bmp280_i2c
+    address: 0x77
+    update_interval: 60s
+    temperature:
+      name: "BMP temp"
+      oversampling: 2x
+    pressure:
+      name: "BMP Pressure"
+
+  - platform: aht10
+    variant: aht20
+    address: 0x38
+    update_interval: 60s
+    temperature:
+      name: "AHT20 temp"
+      id: aht20_temp
+      accuracy_decimals: 1
+      filters:
+      - filter_out: 0.0
+      - median:
+          window_size: 3
+          send_every: 3
+          send_first_at: 1
+    humidity:
+      name: "AHT20 humidity"
+      id: aht20_humidity
+      accuracy_decimals: 1
+      filters:
+      - filter_out: 0.0
+      - median:
+          window_size: 3
+          send_every: 3
+          send_first_at: 1
+
+
